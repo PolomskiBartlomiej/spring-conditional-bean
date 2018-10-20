@@ -1,6 +1,6 @@
-package demo.spring.conditional.conditions;
+package demo.spring.conditional.mock;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import demo.spring.conditional.user.UserService;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -9,13 +9,10 @@ import org.springframework.context.annotation.Primary;
 @Configuration
 class MockConfiguration {
 
-    @Autowired
-    private MockRepository repository;
-
     @Bean
     @Primary
     @ConditionalOnProperty(value = "mock.service")
-    IService mockServis() {
-        return new MockIService(repository);
+    UserService mockUserService() {
+        return new MockUserService();
     }
 }
